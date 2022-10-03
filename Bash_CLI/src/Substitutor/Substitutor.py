@@ -13,13 +13,12 @@ class Substitutor(object):
         """Substitute environment variables in the list of tokens."""
         for tokens in list_tokens:
             if tokens == '"':
-                return ''.join(tokens)
-            if tokens != '"':
-                continue
+                while tokens == '"':
+                    return ''.join(tokens)
             else:
                 return ' '.join(tokens)
         return ' '.join(list_tokens)
-
+    
     # def resolve_env_var(self, list_tokens, mapper: Controller[str]) -> str:
     #     """
     #     Основной метод подстановки.
