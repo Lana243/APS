@@ -15,7 +15,7 @@ class Substitutor(object):
             while tokens != '"':
                 return ''.join(list_tokens)                    # пока только пробное
             if tokens == '"':
-                continue
+                break
             else:
                 return ' '.join(list_tokens)
         return ' '.join(list_tokens)
