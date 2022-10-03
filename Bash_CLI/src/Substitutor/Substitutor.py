@@ -12,6 +12,7 @@ class Substitutor(object):
     def resolve_env_vars(self, list_tokens: List[str]) -> str:
         """Substitute environment variables in the list of tokens."""
         for tokens in list_tokens:
+            tokens.find('"')
             if tokens == '"':
                 while tokens == '"':
                     tokens += ''
