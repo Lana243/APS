@@ -17,7 +17,7 @@ class Substitutor(object):
             end = tokens.find('"') + 1
             while start < end:
                 start += 1
-                return ''.join(tokens)
+                return ''.join(list_tokens)
             start += 1
             end += 1
         return ' '.join(list_tokens)
