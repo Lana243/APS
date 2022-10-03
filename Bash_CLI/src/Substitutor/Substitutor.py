@@ -24,7 +24,7 @@ class Substitutor(object):
                 while start != 0:
                     start += 1
                     return ''.join(list_tokens)
-            if start != tokens.find('"')
+            if start != tokens.find('"') or start != tokens.find('$')
                 return ' '.join(list_tokens)
     
     # def resolve_env_var(self, list_tokens, mapper: Controller[str]) -> str:
