@@ -13,7 +13,7 @@ class Substitutor(object):
         """Substitute environment variables in the list of tokens."""
         for tokens in list_tokens:
             while tokens == '"':
-                return ''.join(tokens)                    # пока только пробное
+                return ''.join(tokens)
             if tokens != '"':
                 break
             else:
