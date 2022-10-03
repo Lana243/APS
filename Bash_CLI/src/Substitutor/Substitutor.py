@@ -14,6 +14,7 @@ class Substitutor(object):
         for tokens in list_tokens:
             if tokens == '"':
                 while tokens == '"':
+                    tokens += ''
                     return ''.join(tokens)
             else:
                 return ' '.join(tokens)
