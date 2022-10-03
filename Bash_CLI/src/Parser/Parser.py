@@ -11,7 +11,11 @@ class Parser(object):
 
     def parse_commands(self, list_tokens: List[str]) -> List[List[str]]:
         """Split list_tokens into separate commands."""
-
+        for tokens in list_tokens:
+            tokens.find('|')
+            start = tokens.find('|')
+            if start == tokens.find('|'):
+                yield list_tokens # пока не решила как поделить массив
         return [list_tokens]
 
     # def parse_commands(self, list_tokens) -> str:
