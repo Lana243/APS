@@ -11,23 +11,25 @@ class Substitutor(object):
 
     def resolve_env_vars(self, list_tokens: List[str]) -> str:
         """Substitute environment variables in the list of tokens."""
+
+        inside_bracket = False
+        straight = ''
         for tokens in list_tokens:
-            tokens.find('"')
-            start = tokens.find('"')
-            end = tokens.find('"') + 1
-            while start < end:
-                start += 1
-                return ''.join(list_tokens)
-            start += 1
-            end += 1
-            if start == tokens.find('$'):
-                while start != 0:
-                    start += 1
-                    return ''.join(list_tokens)
-            if start != tokens.find('"') or start != tokens.find('$'):
-                return ' '.join(list_tokens)
-            tokens += 1
-    
+            if tokens == '"':
+                result = tokens
+                inside_bracket = not inside_bracket
+            elif tokens.startswith('$'):
+                var_name = tokens[1:]
+                if var_name in self.controller.env_vars:
+                    var_name = self.controller.env_vars[var_name]
+                result = var_name
+            if inside_bracket:
+                separator = ''
+            else:
+                separator = ' '
+            straight += separator + result
+        return straight
+
     # def resolve_env_var(self, list_tokens, mapper: Controller[str]) -> str:
     #     """
     #     Основной метод подстановки.
