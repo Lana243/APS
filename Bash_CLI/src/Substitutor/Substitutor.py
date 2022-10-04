@@ -30,7 +30,7 @@ class Substitutor(object):
             else:
                 separator = ' '
             string += separator + result
-        """Assembly and output of the received string"""
+        """Summarize and output of the received string"""
         return string
 
     # def resolve_env_var(self, list_tokens, mapper: Controller[str]) -> str:
