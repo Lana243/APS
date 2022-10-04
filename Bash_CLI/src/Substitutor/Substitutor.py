@@ -11,24 +11,27 @@ class Substitutor(object):
 
     def resolve_env_vars(self, list_tokens: List[str]) -> str:
         """Substitute environment variables in the list of tokens."""
-
         inside_bracket = False
-        straight = ''
+        string = ''
         for tokens in list_tokens:
+            """Сhecking the values in the list of tokens."""
             if tokens == '"':
+            """Сonditions for the double quote token"""
                 result = tokens
                 inside_bracket = not inside_bracket
             elif tokens.startswith('$'):
+            """Сonditions for the token with variable input"""
                 var_name = tokens[1:]
                 if var_name in self.controller.env_vars:
                     var_name = self.controller.env_vars[var_name]
-                result = var_name
+                result = var_name 
             if inside_bracket:
                 separator = ''
             else:
                 separator = ' '
-            straight += separator + result
-        return straight
+            string += separator + result
+        """Assembly and output of the received string"""
+        return string
 
     # def resolve_env_var(self, list_tokens, mapper: Controller[str]) -> str:
     #     """
