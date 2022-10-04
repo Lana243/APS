@@ -14,12 +14,15 @@ class Parser(object):
         solid = []
         line = []
         for tokens in list_tokens:
+        """Сhecking the values in the list of tokens."""
             if tokens == '|':
+            """Сonditions for the vertical line token"""    
                 solid.append(line)
                 line = []
             else:
                 line.append(tokens)
             while True:
+            """Dividing list_tokens in the presence of a vertical line token"""
                 try:
                     solid.remove([])
                 except ValueError:
