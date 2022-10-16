@@ -39,7 +39,7 @@ class GrepCommand(Command):
                 string_to_print += line + '\n'
                 lines_to_print -= 1
 
-        return string_to_print, '', 0
+        return string_to_print[:-1], '', 0
 
     def _parse_args(self) -> argparse.Namespace:
         """Check if the arguments are valid."""
