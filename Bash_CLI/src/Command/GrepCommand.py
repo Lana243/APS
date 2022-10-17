@@ -44,18 +44,12 @@ class GrepCommand(Command):
     def _parse_args(self) -> argparse.Namespace:
         """Check if the arguments are valid."""
         str_args = list(map(str.strip, map(str, self.args)))
-        print(type(str_args), str_args)
 
-        try:
-            parser = argparse.ArgumentParser(prog='grep', description='Find matching patterns.', exit_on_error=False)
-            parser.add_argument('pattern', type=str, help='The pattern to search for.')
-            parser.add_argument('-w', action='store_true', help='Search for the whole word.')
-            parser.add_argument('-i', action='store_true', help='File to search in.')
-            parser.add_argument('-A', type=int, default=0, help='Print the number of lines after match.')
-        except BaseException as exc:
-            print(exc)
+        parser = argparse.ArgumentParser(prog='grep', description='Find matching patterns.')
+        parser.add_argument('pattern', type=str, help='The pattern to search for.')
+        parser.add_argument('-w', action='store_true', help='Search for the whole word.')
+        parser.add_argument('-i', action='store_true', help='File to search in.')
+        parser.add_argument('-A', type=int, default=0, help='Print the number of lines after match.')
 
-        print(type(str_args), str_args)
         args = parser.parse_args(str_args)
-        print(type(args), args)
         return args
