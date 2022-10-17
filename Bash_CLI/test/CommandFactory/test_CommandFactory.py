@@ -33,7 +33,7 @@ def test_generate_commands_1():
     ]
     commands = command_factory.generate_commands(str_commands)
 
-    assert len(commands) == 7
+    assert len(commands) == 8
 
     assert isinstance(commands[0], CatCommand)
     assert isinstance(commands[1], EchoCommand)
