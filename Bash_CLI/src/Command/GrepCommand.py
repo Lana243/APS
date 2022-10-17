@@ -44,7 +44,6 @@ class GrepCommand(Command):
     def _parse_args(self) -> argparse.Namespace:
         """Check if the arguments are valid."""
         str_args = list(map(str.strip, map(str, self.args)))
-        print(str_args)
 
         parser = argparse.ArgumentParser(prog='grep', description='Find matching patterns.', exit_on_error=False)
         parser.add_argument('pattern', type=str, help='The pattern to search for.')
@@ -53,4 +52,5 @@ class GrepCommand(Command):
         parser.add_argument('-A', type=int, default=0, help='Print the number of lines after match.')
 
         args = parser.parse_args(str_args)
+        print(args)
         return args
