@@ -33,7 +33,7 @@ class GrepCommand(Command):
 
         for line in stdin.splitlines():
             if regex.search(line):
-                lines_to_print += 1 + lines_after
+                lines_to_print = 1 + lines_after
 
             if lines_to_print > 0:
                 string_to_print += line + '\n'
