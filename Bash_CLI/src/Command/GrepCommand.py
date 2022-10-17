@@ -1,4 +1,6 @@
 import argparse
+import io
+import sys
 from typing import Optional, List, Tuple, Sequence
 
 from src.Command import Command
@@ -18,8 +20,8 @@ class GrepCommand(Command):
         """Custom realization of grep command."""
         try:
             args = self._parse_args()
-        except BaseException as exc:
-            return '', '', -1
+        except Exception as exc:
+            return '', str(exc), -1
 
         pattern = args.pattern
         whole_word = args.w
@@ -51,5 +53,14 @@ class GrepCommand(Command):
         parser.add_argument('-i', action='store_true', help='File to search in.')
         parser.add_argument('-A', type=int, default=0, help='Print the number of lines after match.')
 
-        args = parser.parse_args(str_args)
+        fake_stdout = io.StringIO()
+        current_stdout = sys.stdout
+        sys.stdout = fake_stdout
+        try:
+            args = parser.parse_args(str_args)
+        except SystemExit:
+            raise RuntimeError(fake_stdout.getvalue())
+        finally:
+            sys.stdout = current_stdout
+
         return args
