@@ -51,6 +51,7 @@ class GrepCommand(Command):
         parser.add_argument('-i', action='store_true', help='File to search in.')
         parser.add_argument('-A', type=int, default=0, help='Print the number of lines after match.')
 
+        print(type(str_args), str_args)
         args = parser.parse_args(str_args)
-        print(args)
+        print(type(args), args)
         return args
