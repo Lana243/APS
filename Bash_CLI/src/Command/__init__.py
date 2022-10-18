@@ -7,6 +7,8 @@ from .EchoCommand import EchoCommand
 from .PwdCommand import PwdCommand
 from .WcCommand import WcCommand
 from .GrepCommand import GrepCommand
+from .LsCommand import LsCommand
+from .CdCommand import CdCommand
 
 
 __all__ = [
@@ -19,4 +21,6 @@ __all__ = [
     'PwdCommand',
     'WcCommand',
     'GrepCommand',
+    'LsCommand',
+    'CdCommand'
 ]

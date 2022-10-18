@@ -6,10 +6,11 @@ from src.Token import Token
 
 
 def test_cat_command_run_1():
+    """WARNING: To run this test use project root as a working directory"""
     controller = Controller()
     filename = os.path.join(os.getcwd(), 'test', 'Command', 'test_AssignCommand.py')
 
-    assert os.path.isfile(filename)
+    assert os.path.isfile(filename), 'WARNING: To run this test use project root as a working directory'
 
     command = CatCommand(args=[Token(filename, '', '')])
 
