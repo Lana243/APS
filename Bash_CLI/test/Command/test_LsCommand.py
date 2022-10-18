@@ -22,7 +22,7 @@ def test_ls_command_run_2():
     filename = os.path.join(os.getcwd(), 'resources', 'subdirectory')
     command = LsCommand(args=[Token(filename, '', '')])
     stdout, _, _ = command.run('', controller)
-    assert stdout == ""
+    assert stdout == "poem.txt"
 
 
 def test_ls_command_run_3():
